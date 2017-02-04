@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/01/04 17:00:33 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/03 17:10:35 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		parsing(va_list ap, char c, t_options *opt)
 	return (0);
 }
 
-void	option_detect(char c, t_options *opt)
+int		option_detect(char *str, int i, t_options *opt)
 {
 	if (c == '-')
 		opt->left_align = 1;
@@ -50,4 +50,6 @@ void	option_detect(char c, t_options *opt)
 		opt->zero = 1;
 	if (c == ' ')
 		opt->space = 1;
+	i++;
+	return (i);
 }

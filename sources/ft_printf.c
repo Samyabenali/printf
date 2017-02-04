@@ -6,27 +6,37 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 10:10:59 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/01/04 17:01:46 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/03 18:05:31 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	myprintf(char *str, ...)
+int		ft_printf(char *str, ...)
 {
-	int	i;
-	va_list ap;
-	va_start(ap, str);
+	int		i;
+	int 	j;
+	va_list	ap;
 	t_options opt;
 	int	len;
 
+	va_start(ap, str);
 	i = 0;
-	if (str[i] == '%')
+	while (str[i])
 	{
-		len = parsing(ap, str[i + 1], &opt);
-		ft_putstr(opt.buff);
-//		option_detect(str[i], &opt);
-		i = i + len;
+		opt.buffer[i++] = str[j++];
+		if (str[i] == '%')
+		{
+			i++;
+			while (ft_strchr("diouxXDOUsSp%", str[i]) == NULL)
+				i += option_detect(str, i, &opt);
+			if (ft_strchr("diouxXDOUsSp%", str[i]) != NULL)
+			{	
+				len += in_out(ap, str[i], &opt);
+				i++;
+			}
+		}
+
 	}
 	opt.buff[i] = '\0';
 //	ft_putstr(opt.buff);
