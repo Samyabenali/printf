@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 17:25:02 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/17 17:52:57 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
-int		parsing(va_list ap, char c, t_options *opt)
+char	*ft_strcat(char *dest, const char *src)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	int i;
+	int j;
 
 	i = 0;
-	while (i != 7)
-	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
+	while (dest[i])
 		i++;
+	j = 0;
+	while (src[j])
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	return (0);
+	dest[i] = '\0';
+	return (dest);
 }

@@ -6,14 +6,14 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 15:21:45 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/01/02 16:50:36 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 13:40:55 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-int	len_count(int value, int base)
+int	len_count(intmax_t value, int base)
 {
 	int len;
 
@@ -31,13 +31,13 @@ int	len_count(int value, int base)
 	return (len);
 }
 
-char *itoa_base(int value, int base)
+char *ft_itoa_base(intmax_t value, int base)
 {
 	static  char rep[] = "0123456789abcdef";
-	char    *ptr;
-	char 	*buff;
-	int     num;
-	int 	len;
+	char		*ptr;
+	char		*buff;
+	intmax_t	 num;
+	int			len;
 
 	len = len_count(value, base);
 	buff = malloc((len + 1) * sizeof(char));
@@ -56,14 +56,4 @@ char *itoa_base(int value, int base)
 	if (num < 0 && base == 10)
 		*--ptr = '-';
 	return (ptr);
-}
-
-int main()
-{
-	int a;
-	char *c;
-
-	c = itoa_base(0, 2);
-	printf("%s\n", c);
-	return (0);
 }

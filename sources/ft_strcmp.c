@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 17:56:21 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/19 18:31:17 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
-
-int		parsing(va_list ap, char c, t_options *opt)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	int i;
 
 	i = 0;
-	while (i != 7)
-	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	}
-	return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

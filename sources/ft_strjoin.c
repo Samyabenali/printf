@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 18:14:30 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/21 15:17:28 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-int		parsing(va_list ap, char c, t_options *opt)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	char *str;
 
-	i = 0;
-	while (i != 7)
+	if (!s1 || !s2)
+		return (NULL);
+	str = (char*)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	if (s1 && s2)
 	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
-		i++;
+		ft_strcpy(str, s1);
+		ft_strcat(str, (char *)s2);
+		return (str);
 	}
 	return (0);
 }

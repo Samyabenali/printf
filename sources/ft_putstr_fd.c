@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 13:51:51 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/21 15:27:55 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include <unistd.h>
 
-int		parsing(va_list ap, char c, t_options *opt)
+static void	ft_putchar(char c, int fd)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	write(fd, &c, 1);
+}
 
+void		ft_putstr_fd(char const *s, int fd)
+{
+	int i;
+
+	if (!s || !fd)
+		return ;
 	i = 0;
-	while (i != 7)
+	while (s[i])
 	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
+		ft_putchar(s[i], fd);
 		i++;
 	}
-	return (0);
 }

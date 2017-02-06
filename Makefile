@@ -6,7 +6,7 @@
 #    By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/17 15:12:18 by sait-ben          #+#    #+#              #
-#    Updated: 2017/02/03 17:10:38 by sait-ben         ###   ########.fr        #
+#    Updated: 2017/02/06 14:38:17 by sait-ben         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,14 +92,16 @@ SRCS 	= ft_atoi.c \
 		  cast.c \
 		  dou_arg.c \
 		  apply_options.c \
+		  apply_options_bis.c \
 		  in_out.c \
-		  apply_options2.c \
-		  apply_options3.c \
+		  ft_maj.c \
 		  w_putchar.c \
 		  c_arg.c \
 		  p_arg.c \
 		  ft_itoa_base_uint.c \
-		  pct_arg.c
+		  pct_arg.c \
+		  ft_valeur_absolue.c
+
 
 OBJS	= $(SRCS:%.c=%.o)
 

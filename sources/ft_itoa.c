@@ -5,64 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/02 16:50:47 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/01/02 17:03:10 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 15:49:10 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/21 13:31:39 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int		len_count(int nb)
+static int			int_len(long int n)
 {
-	int len;
-	
-	len = 0;
-	if (nb < 10)
-	{	
-		len = 1;
-		nb = nb * -1;
-	}
-	while (nb != 0)
+	long int i;
+
+	i = 1;
+	while (n > 9)
 	{
-		nb = nb / 10;
-		len++;
+		n = n / 10;
+		i++;
 	}
-	return(len);
+	return (i);
 }
 
-char	*ft_itoa(int nb)
+char				*ft_itoa(int n)
 {
-	char rep[] = "0123456789";
-	char *buff;
-	char *ptr;
-	unsigned int num;
-	int len;
+	char			*str;
+	int				len;
+	long int		k;
+	int				sign;
 
-	len = len_count(nb);
-	buff = malloc(sizeof(char) * (len + 1));
-	ptr = &buff[len];
-	*ptr = '\0';
-	num = nb;
-	if (nb < 0)
-		num = nb * -1;
-	if (num == 0)
-		*--ptr = rep[0];
-	while (num != 0)
+	k = n;
+	sign = 0;
+	if (k < 0)
+		sign = 1;
+	if (k < 0)
+		k *= -1;
+	len = int_len(k) + sign;
+	if ((str = (char*)malloc(sizeof(char) * len + 1)) == NULL)
+		return (NULL);
+	str[len] = '\0';
+	if (k == 0)
+		str[0] = '0';
+	while (len != 0)
 	{
-		*--ptr = rep[num % 10];
-		num = num / 10;
+		str[len-- - 1] = (k % 10) + 48;
+		k = (k / 10);
 	}
-	if (nb < 0)
-		*--ptr = '-';
-	return (ptr);
-}
-
-int	main()
-{
-	char *str;
-
-	str = ft_itoa(-2147483647);
-	printf("%s\n", str);
-	return (0);
+	if (sign == 1)
+		str[0] = '-';
+	return (str);
 }

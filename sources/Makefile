@@ -6,7 +6,7 @@
 #    By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/17 15:12:18 by sait-ben          #+#    #+#              #
-#    Updated: 2017/02/01 16:21:52 by sait-ben         ###   ########.fr        #
+#    Updated: 2017/02/06 14:59:00 by sait-ben         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,6 +92,7 @@ SRCS 	= ft_atoi.c \
 		  cast.c \
 		  dou_arg.c \
 		  apply_options.c \
+		  apply_options_bis.c \
 		  in_out.c \
 		  apply_options2.c \
 		  apply_options3.c \
@@ -102,8 +103,6 @@ SRCS 	= ft_atoi.c \
 		  pct_arg.c
 
 OBJS	= $(SRCS:%.c=%.o)
-
-CFILES	= $(SRCS:%=./sources/%)
 
 all :	$(NAME)
 

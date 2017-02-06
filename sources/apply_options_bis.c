@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   apply_options_bis.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2017/02/06 11:53:46 by sait-ben          #+#    #+#             */
+/*   Updated: 2017/02/06 12:05:56 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		parsing(va_list ap, char c, t_options *opt)
+char	*apply_options_bis(char *str, t_options *opt)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	int		len;
+	char	*src;
+	int		index;
 
-	i = 0;
-	while (i != 7)
+	index = 0;
+	src = (char*)malloc(sizeof(char) * opt->precision + 1);
+	if (src == NULL)
+		return (NULL);
+	while (str[index] == ' ')
+		index++;
+	while (i <= (opt->precision - ft_strlen(res) + index))
 	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
+		src[index] = '0';
 		i++;
+		index++;
 	}
-	return (0);
+	return (src);
 }

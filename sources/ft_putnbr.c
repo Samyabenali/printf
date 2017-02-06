@@ -1,36 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 13:39:37 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/18 12:09:35 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include <unistd.h>
+#include "libft.h"
 
-int		parsing(va_list ap, char c, t_options *opt)
+static unsigned int	convert(int n)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	unsigned int k;
 
-	i = 0;
-	while (i != 7)
-	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
-		i++;
-	}
-	return (0);
+	if (n < 0)
+		k = -n;
+	else
+		k = n;
+	return (k);
+}
+
+void				ft_putnbr(int n)
+{
+	unsigned int b;
+
+	if (n < 0)
+		ft_putchar('-');
+	b = convert(n);
+	if (b >= 10)
+		ft_putnbr(b / 10);
+	ft_putchar((b % 10) + 48);
 }

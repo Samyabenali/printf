@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.c                                          :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Created: 2016/11/17 16:53:17 by sait-ben          #+#    #+#             */
+/*   Updated: 2016/11/21 14:28:09 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int		parsing(va_list ap, char c, t_options *opt)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int i;	
-	static const t_flags g_conv[] = {
-		{ "diouxX", &int_arg },
-		{ "DOU", &dou_arg },
-		{ "Cc", &c_arg },
-		{ "s", &s_arg },
-		{ "S", &ws_arg },
-		{ "p", &p_arg },
-		{ "%", &pct_arg }
-	};
+	unsigned char	*str1;
+	unsigned char	*str2;
 
-	i = 0;
-	while (i != 7)
+	str1 = (unsigned char*)src;
+	str2 = (unsigned char*)dest;
+	if (src < dest)
 	{
-		if (ft_strchr(g_conv[i].str, c) != 0)
-			return (g_conv[i].f(ap, c, opt));
-		i++;
+		while (n > 0)
+		{
+			str2[n - 1] = str1[n - 1];
+			n--;
+		}
 	}
-	return (0);
+	if (src > dest)
+		str2 = ft_memcpy(str2, str1, n);
+	return (str2);
 }
