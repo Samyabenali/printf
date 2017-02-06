@@ -6,11 +6,11 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 11:24:27 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:48:53 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 16:22:52 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 char	*apply_largeur(char *str, t_options *opt)
 {
@@ -70,7 +70,7 @@ char	*apply_precision_neg(char *str, t_options *opt)
 	return (src);
 }
 
-char	*apply_precision(char *str, t_options *opt)
+char	*apply_precision(char *str, char c,  t_options *opt)
 {
 	int		i;
 	int		j;
@@ -94,7 +94,7 @@ char	*apply_precision(char *str, t_options *opt)
 	{
 		len = 0;
 		if (ft_atoi(str) < 0)
-			return (apply_precision_neg(opt-> str));
+			return (apply_precision_neg(str, opt));
 		src = (char*)malloc(sizeof(char) * opt->precision + 1);
 		while (i < (opt->precision - (int)ft_strlen(str)))
 		{
@@ -113,7 +113,7 @@ char	*apply_precision(char *str, t_options *opt)
 	return (src);
 }
 
-char	*apply_plus(char *str, t_options *opt)
+char	*apply_plus(char *str, char c, t_options *opt)
 {
 	int		i;
 	char	*src;
@@ -142,7 +142,7 @@ char	*apply_plus(char *str, t_options *opt)
 	return (src);
 }
 
-char	*apply_space(char *str, t_options *opt)
+char	*apply_space(char *str, char c, t_options *opt)
 {
 	int		i;
 	char	*src;
@@ -172,7 +172,7 @@ char	*apply_options(char *str, char c, t_options *opt)
 	if (opt->precision == 0 && opt->hashtag == 1 && c == 'o' && ft_atoi(str) == 0)
 		return ("0");
 	if (opt->precision != -1)
-		str = apply_precision(str, opt);
+		str = apply_precision(str, c, opt);
 	if (opt->hashtag != 0 && (c == 'x' || c == 'X'))
 		str = apply_hashtag_x(str, opt);
 	if (opt->largeur != -1)
@@ -180,9 +180,9 @@ char	*apply_options(char *str, char c, t_options *opt)
 	if (opt->zero != 0)
 		str = apply_zero(str, opt);
 	if (opt->space != 0)
-		str = apply_space(str, opt);
+		str = apply_space(str, c, opt);
 	if (opt->plus != 0)
-		str = apply_plus(str, opt);
+		str = apply_plus(str, c, opt);
 	if (opt->hashtag != 0 && c != 'x' && c != 'X')
 		str = apply_hashtag(str, opt);
 	if (opt->moins != 0)

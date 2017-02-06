@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 13:48:07 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 13:57:02 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:57:14 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*c_arg(va_list ap, char c, t_options *opt)
 {
 	char	*str;
+	wchar_t	wt;
 
 	if (c == 'c')
 	{
@@ -24,6 +25,7 @@ char	*c_arg(va_list ap, char c, t_options *opt)
 		str[1] = '\0';
 	}
 	if (c == 'C')
-		str = ft_wputchar(ap, c, opt);
+		wt = va_arg(ap, wchar_t);
+		str = ft_wputchar(wt);
 	return (str);
 }

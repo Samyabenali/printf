@@ -6,13 +6,13 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:00:23 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:19:47 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:53:08 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		def_opt(char *str, int i, t_opt *opt)
+int		def_opt(char *str, int i, t_options *opt)
 {
 	int i_init;
 
@@ -33,12 +33,12 @@ int		def_opt(char *str, int i, t_opt *opt)
 		i++;
 	}
 	if (i_init != i)
-		i = def_opt(opt, str, i);
-	i = def_opt_bis(opt, str, i);
+		i = def_opt(str, i, opt);
+	i = def_opt_bis(str, i, opt);
 	return (i);
 }
 
-int		def_opt_bis(char *str, int i, t_opt *opt)
+int		def_opt_bis(char *str, int i, t_options *opt)
 {
 	int i_init;
 
@@ -54,11 +54,11 @@ int		def_opt_bis(char *str, int i, t_opt *opt)
 		i++;
 	}
 	if (i != i_init)
-		i = def_opt(opt, str, i);
+		i = def_opt(str, i, opt);
 	return (i);
 }
 
-int		def_opt2(char *str, int i, t_opt *opt)
+int		def_opt2(char *str, int i, t_options *opt)
 {
 	if (str[i] >= 48 && str[i] <= 57)
 		opt->largeur = 0;
@@ -70,7 +70,7 @@ int		def_opt2(char *str, int i, t_opt *opt)
 	return (i);
 }
 
-int		def_opt3(char *str, int i, t_opt *opt)
+int		def_opt3(char *str, int i, t_options *opt)
 {
 	if (str[i] == '.')
 	{
@@ -94,7 +94,7 @@ int		option_detect(char *str, int i, t_options *opt)
 		{
 			opt->taille = 1;
 			i++;
-			i = def_opt4(str, i, opt);
+			i = option_detect(str, i, opt);
 		}
 		else
 			opt->taille = 2;
@@ -106,7 +106,7 @@ int		option_detect(char *str, int i, t_options *opt)
 		{
 			opt->taille = 4;
 			i++;
-			i = def_opt4(str, i, opt);
+			i = option_detect(str, i, opt);
 		}
 		else
 			opt->taille = 3;

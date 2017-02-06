@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 10:10:59 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:21:32 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:37:17 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int		ft_printf(char *str, ...)
 {
-	int		i;
-	va_list	ap;
-	t_options opt;
-	int	len;
+	int			i;
+	va_list		ap;
+	t_options	opt;
+	int			len;
 
 	va_start(ap, str);
 	i = 0;
@@ -39,12 +39,3 @@ int		ft_printf(char *str, ...)
 	}
 	return (len);
 }		
-
-
-int		main()
-{
-	myprintf("%s", "paul");
-	ft_putchar('\n');
-//	printf("Ton nom est : %", "paul");
-	return (0);
-}

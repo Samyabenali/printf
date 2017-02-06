@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 17:21:03 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/03 17:38:24 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 17:20:13 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	init_flags(t_options *opt)
 {
-	opt->left_align = 0;
-	opt->positiv = 0;
+	opt->moins = 0;
+	opt->plus = 0;
 	opt->hashtag = 0;
 	opt->zero = 0;
 	opt->space = 0;
-	opt->precision = 0;
-	opt->largeur = 0;
+	opt->precision = -1;
+	opt->largeur = -1;
 	opt->taille = 0;
 }

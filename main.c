@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maj.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/06 13:43:18 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 15:55:34 by sait-ben         ###   ########.fr       */
+/*   Created: 2017/02/06 16:34:52 by sait-ben          #+#    #+#             */
+/*   Updated: 2017/02/06 17:38:14 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "./sources/printf.h"
 
-char	*ft_maj(char *res)
+int		main()
 {
-	char	*str;
-	int		i;
-
-	i = 0;
-	str = (char*)malloc(sizeof(char) * ft_strlen(res) + 1);
-	if (str == NULL)
-		return (res);
-	while (res[i])
-	{
-		if (res[i] >= 97 && res[i] <= 122)
-			str[i] = res[i] - 32;
-		else
-			str[i] = res[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	ft_printf("ton nom est %s et tu as %d ans", "paul", 25425225);
+	ft_putchar('\n');
+	printf("Ton nom est : %s", "paul");
+	return (0);
 }

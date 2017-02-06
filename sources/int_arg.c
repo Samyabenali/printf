@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:07:22 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:40:58 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 16:22:18 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*int_arg(va_list ap, char c, t_options *opt)
 	int			resbis;
 
 	if (ft_strchr("DOU", c) != NULL)
-		c = dou_arg(ap, c, opt);
+		res = dou_arg(ap, c, opt);
 	if (opt->taille != 0 && ft_strchr("di", c) != NULL)
 	{
 		nbb = signed_cast(ap, opt);
@@ -35,7 +35,7 @@ char	*int_arg(va_list ap, char c, t_options *opt)
 			return (ft_itoa_base_uint(nb, 8));
 		if (c == 'u')
 			return (ft_itoa_base_uint(nb, 10));
-		return (ft_itoa_base_max(nb, 16));
+		return (ft_itoa_base_uint(nb, 16));
 	}
 	if (c == 'c')
 	{

@@ -6,11 +6,11 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 13:50:49 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 13:47:11 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 16:03:07 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 char	*ws_bis(wchar_t w)
 {

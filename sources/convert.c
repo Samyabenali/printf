@@ -6,15 +6,15 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:56:23 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:53:50 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		parsing(va_list ap, char c, t_options *opt)
+char	*parsing(va_list ap, char c, t_options *opt)
 {
-	int i;	
+	int	i;	
 	static const t_flags g_conv[] = {
 		{ "diouxX", &int_arg },
 		{ "DOU", &dou_arg },

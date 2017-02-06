@@ -6,14 +6,16 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:39:53 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 12:45:34 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:55:09 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char	dou_arg(va_list ap, char c, t_opt *opt)
+char	*dou_arg(va_list ap, char c, t_options *opt)
 {
+	char	*str;
+
 	if (c == 'D')
 		c = 'd';
 	if (c == 'O')
@@ -21,5 +23,5 @@ char	dou_arg(va_list ap, char c, t_opt *opt)
 	if (c == 'U')
 		c = 'u';
 	opt->taille = 3;
-	return (c);
+	return (int_arg(ap, c, opt));
 }

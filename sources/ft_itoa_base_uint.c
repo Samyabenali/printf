@@ -6,13 +6,13 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:38:22 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 14:40:14 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 16:51:30 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	len_count(uintmax_t value, int base)
+int	ulen_count(uintmax_t value, int base)
 {
 	int len;
 
@@ -25,15 +25,15 @@ int	len_count(uintmax_t value, int base)
 	return (len);
 }
 
-char *ft_itoa_base(uintmax_t value, int base)
+char	*ft_itoa_base_uint(uintmax_t value, int base)
 {
-	static  char rep[] = "0123456789abcdef";
+	static char rep[] = "0123456789abcdef";
 	char		*ptr;
 	char		*buff;
-	uintmax_t	 num;
+	uintmax_t	num;
 	int			len;
 
-	len = len_count(value, base);
+	len = ulen_count(value, base);
 	buff = malloc((len + 1) * sizeof(char));
 	ptr = &buff[len];
 	*ptr = '\0';

@@ -6,9 +6,11 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:23:43 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 12:31:09 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/06 15:44:12 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "printf.h"
 
 char		*p_arg(va_list ap, char c, t_options *opt)
 {

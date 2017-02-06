@@ -6,7 +6,7 @@
 #    By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/17 15:12:18 by sait-ben          #+#    #+#              #
-#    Updated: 2017/02/06 14:38:17 by sait-ben         ###   ########.fr        #
+#    Updated: 2017/02/06 16:48:04 by sait-ben         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,8 +86,9 @@ SRCS 	= ft_atoi.c \
 		  ft_printf.c \
 		  convert.c \
 		  options.c \
-		  options2.c \
 		  int_arg.c \
+		  in_out.c \
+		  init_flags.c \
 		  s_arg.c \
 		  cast.c \
 		  dou_arg.c \
@@ -105,10 +106,14 @@ SRCS 	= ft_atoi.c \
 
 OBJS	= $(SRCS:%.c=%.o)
 
+CFILES	= $(SRCS:%=./sources/%)
+
+HEADER	= $(INCLUDE:%=./sources/%)
+
 all :	$(NAME)
 
 $(NAME)	:
-	gcc $(OPTION) $(SRCS) -I $(HEADER)
+	gcc $(OPTION) $(CFILES) -I $(HEADER)
 	ar rc $(NAME) $(OBJS)
 	ranlib $(NAME)
 
