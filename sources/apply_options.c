@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 11:24:27 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 16:22:52 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 17:39:12 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,7 @@ char	*apply_largeur(char *str, t_options *opt)
 			i++;
 		}
 		while (j < (int)ft_strlen(str))
-		{
-			src[i] = str[j];
-			i++;
-			j++;
-		}
+			src[i++] = str[j++];
 	}
 	src[i] = '\0';
 	return (src);
@@ -78,7 +74,7 @@ char	*apply_precision(char *str, char c,  t_options *opt)
 	int		len;
 
 	i = 0;
-	j = 0;
+	j = 0;	
 	len = (int)ft_strlen(str);
 	if (opt->precision == 0 && ft_atoi(str) == 0)
 	{
@@ -90,15 +86,23 @@ char	*apply_precision(char *str, char c,  t_options *opt)
 		return (ft_strsub(str, 0, opt->precision));
 	if ((int)ft_strlen(str) >= opt->precision)
 		return (str);
+	if (len < opt->precision && opt->type == 'c')
+		return (str);
 	else
 	{
 		len = 0;
 		if (ft_atoi(str) < 0)
 			return (apply_precision_neg(str, opt));
 		src = (char*)malloc(sizeof(char) * opt->precision + 1);
-		while (i < (opt->precision - (int)ft_strlen(str)))
+		while ((i < (opt->precision - (int)ft_strlen(str))) && c != 's')
 		{
 			src[i] = '0';
+			i++;
+		}
+		src[opt->precision] = '\0';
+		while ((i < (opt->precision - (int)ft_strlen(str))) && c != 's')
+		{
+			src[i] = ' ';
 			i++;
 		}
 		src[opt->precision] = '\0';
@@ -118,6 +122,7 @@ char	*apply_plus(char *str, char c, t_options *opt)
 	int		i;
 	char	*src;
 
+	(void)opt;
 	i = 0;
 	if (ft_atoi(str) < 0 || ft_strchr("di", c) == NULL)
 		return (str);
@@ -130,14 +135,16 @@ char	*apply_plus(char *str, char c, t_options *opt)
 		return (str);
 	}
 	else
+	{	
 		src = (char*)malloc(sizeof(char) * ft_strlen(str) + 2);
-	src[i] = '+';
-	i++;
-	src[ft_strlen(str) + 1] = '\0';
-	while (i <= (int)ft_strlen(str))
-	{
-		src[i] = str[i - 1];
+		src[i] = '+';
 		i++;
+		src[ft_strlen(str) + 1] = '\0';
+		while (i <= (int)ft_strlen(str))
+		{
+			src[i] = str[i - 1];
+			i++;
+		}
 	}
 	return (src);
 }
@@ -169,23 +176,26 @@ char	*apply_space(char *str, char c, t_options *opt)
 
 char	*apply_options(char *str, char c, t_options *opt)
 {
+	char	*src;
+
+	src = str;
 	if (opt->precision == 0 && opt->hashtag == 1 && c == 'o' && ft_atoi(str) == 0)
 		return ("0");
 	if (opt->precision != -1)
-		str = apply_precision(str, c, opt);
+		src = apply_precision(src, c, opt);
 	if (opt->hashtag != 0 && (c == 'x' || c == 'X'))
-		str = apply_hashtag_x(str, opt);
+		src = apply_hashtag_x(src, opt);
 	if (opt->largeur != -1)
-		str = apply_largeur(str, opt);
+		src = apply_largeur(src, opt);
 	if (opt->zero != 0)
-		str = apply_zero(str, opt);
+		src = apply_zero(src, opt);
 	if (opt->space != 0)
-		str = apply_space(str, c, opt);
+		src = apply_space(src, c, opt);
 	if (opt->plus != 0)
-		str = apply_plus(str, c, opt);
+		src = apply_plus(src, c, opt);
 	if (opt->hashtag != 0 && c != 'x' && c != 'X')
-		str = apply_hashtag(str, opt);
+		src = apply_hashtag(src, opt);
 	if (opt->moins != 0)
-		str = apply_moins(str, opt);
-	return (str);
+		src = apply_moins(src, opt);
+	return (src);
 }

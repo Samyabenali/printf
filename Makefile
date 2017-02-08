@@ -6,19 +6,9 @@
 #    By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/17 15:12:18 by sait-ben          #+#    #+#              #
-#    Updated: 2017/02/06 16:48:04 by sait-ben         ###   ########.fr        #
+#    Updated: 2017/02/08 16:48:14 by sait-ben         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-NAME	= libftprintf.a
-
-CFLAGS	= -Wall -Wextra -Werror
-
-OPTION	= -c
-
-INCLUDE	= libft.h \
-		  printf.h \
-		  get_next_line.h
 
 SRCS 	= ft_atoi.c \
 		  ft_bzero.c \
@@ -85,6 +75,7 @@ SRCS 	= ft_atoi.c \
 		  get_next_line.c \
 		  ft_printf.c \
 		  convert.c \
+		  option_detect.c \
 		  options.c \
 		  int_arg.c \
 		  in_out.c \
@@ -103,24 +94,40 @@ SRCS 	= ft_atoi.c \
 		  pct_arg.c \
 		  ft_valeur_absolue.c
 
+OBJ_PATH = ./obj/
 
-OBJS	= $(SRCS:%.c=%.o)
+SOURCE_PATH = ./sources/
+
+OBJ_FILE = $(SRCS:%.c=%.o)
+
+OBJ	= $(OBJ_FILE:%=$(OBJ_PATH)%)
 
 CFILES	= $(SRCS:%=./sources/%)
 
-HEADER	= $(INCLUDE:%=./sources/%)
+HEADER	= $(INC:%=./sources/%)
 
-all :	$(NAME)
+FLAGS = -Wextra -Werror -Wall -g
 
-$(NAME)	:
-	gcc $(OPTION) $(CFILES) -I $(HEADER)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+NAME = libftprintf.a
 
-clean :
-	rm -f $(OBJS)
+INC = libft.h \
+	  printf.h \
+	  get_next_line.h \
 
-fclean :	clean
-	rm -rf $(NAME)
+$(OBJ_PATH)%.o: $(SOURCE_PATH)%.c $(HEADER)
+	    @mkdir -p $(OBJ_PATH)
+		gcc $(FLAGS) -o $@ -c $<
 
-re :	fclean all
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	    ar rc $(NAME) $(OBJ)
+		ranlib $(NAME)
+
+clean:
+	    /bin/rm -rf $(OBJ_PATH)
+
+fclean: clean
+	    /bin/rm -f $(NAME)
+
+re: fclean all

@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 16:10:29 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 16:17:57 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:26:49 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,31 +24,20 @@ char	*apply_zero(char *res, t_options *opt)
 		res[1] = opt->type;
 		i = 2;
 		while (res[i] != opt->type)
-		{
+		{	
 			res[i] = '0';
 			i++;
 		}
 		res[i] = '0';
 		return (res);
 	}
-	i = 0;
-	if (opt->plus == 1 && ft_atoi(res) > 0)
-		i = 1;
-	if (ft_atoi(res) < 0)
-	{
-		res[i] = '-';
-		i++;
-		while (res[i] < 48 || res[i] > 57)
-		{
-			res[i] = '0';
-			i++;
-		}
-	}
 	else
 	{
-		while (res[i] == ' ')
+		i = 0;
+		while (res[i])
 		{
-			res[i] = '0';
+			if (res[i] == ' ')
+				res[i] = '0';
 			i++;
 		}
 	}
@@ -131,6 +120,7 @@ char	*apply_moins(char *res, t_options *opt)
 	char	*str;
 	int		len;
 
+	(void)opt;
 	i = 0;
 	j = 0;
 	while (res[j] == ' ')

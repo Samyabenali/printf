@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 13:08:50 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 16:17:42 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 13:17:19 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include "libft.h"
 # include <wchar.h>
+
+# define BUFF_SIZE2 200
 
 typedef struct	s_options
 {
@@ -30,8 +32,9 @@ typedef struct	s_options
 	int		lenstr;
 	int		taille;
 	int		count;
-	int		i;
+	int		j;
 	char	type;
+	char	buff[BUFF_SIZE2];
 }				t_options;
 
 typedef struct	s_flags
@@ -43,6 +46,11 @@ typedef struct	s_flags
 int				ft_printf(char *str, ...);
 char			*parsing(va_list ap, char c, t_options *opt);
 int				option_detect(char *str, int i, t_options *opt);
+int				def_opt(char *str, int i,t_options *opt);
+int				def_opt_bis(char *str, int i,t_options *opt);
+int				largeur(char *str, int i,t_options *opt);
+int				precision(char *str, int i,t_options *opt);
+int				def_opt4(char *str, int i,t_options *opt);
 char			*s_arg(va_list ap, char c, t_options *opt);
 char			*int_arg(va_list ap, char c, t_options *opt);
 int				ma_fct(char *str, int i);

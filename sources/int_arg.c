@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:07:22 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 16:22:18 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:18:38 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ char	*int_arg(va_list ap, char c, t_options *opt)
 	if (opt->taille != 0 && ft_strchr("di", c) != NULL)
 	{
 		nbb = signed_cast(ap, opt);
-		if (nbb == -9223372036854775808)
-			return ("-9223372036854775808");
+//		if (nbb == -9223372036854775808)
+//			return ("-9223372036854775808");
 		return (ft_itoa_base(nbb, 10));
 	}
 	if (opt->taille != 0 && ft_strchr("ouxX", c) != NULL)

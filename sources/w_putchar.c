@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 13:50:49 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 16:03:07 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 12:27:41 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ char	*ws_arg(va_list ap, char c, t_options *opt)
 	wchar_t	*wstr;
 	int		i;
 
+	(void)opt;
+	(void)c;
 	i = 0;
 	wstr = va_arg(ap, wchar_t*);
 	if ((src = (char*)malloc(sizeof(wchar_t) * (wstrlen(wstr) + 1))) == NULL)

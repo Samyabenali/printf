@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 16:34:52 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 17:38:14 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/08 18:06:43 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int		main()
 {
-	ft_printf("ton nom est %s et tu as %d ans", "paul", 25425225);
+	int	len;
+	
+	ft_printf("%-5%");
 	ft_putchar('\n');
-	printf("Ton nom est : %s", "paul");
+//	printf("Ton nom est : %s", "paul");
 	return (0);
 }

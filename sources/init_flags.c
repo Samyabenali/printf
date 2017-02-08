@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 17:21:03 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 17:20:13 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/07 15:57:47 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	init_flags(t_options *opt)
 	opt->precision = -1;
 	opt->largeur = -1;
 	opt->taille = 0;
+	opt->type = 0;
 }
