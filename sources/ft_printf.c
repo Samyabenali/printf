@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 10:10:59 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/08 17:59:04 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/14 13:58:52 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ int		ft_printf(char *str, ...)
 		if (str[i] == '%')
 		{
 			i++;
+			if (str[i] == '\0')
+				break;
 			while (ft_strchr(" .0123456789+-#lhzj", str[i]) != NULL && str[i] != '\0')
 				i = option_detect(str, i, &opt);
-			if (ft_strchr("diouxXcCDOUsSp%", str[i]) != NULL)
+			if (str[i] && ft_strchr("diouxXcCDOUsSp%ZR", str[i]) != NULL)
 			{	
 				len += in_out(ap, str[i], &opt);
 				i++;
@@ -39,6 +41,7 @@ int		ft_printf(char *str, ...)
 			{
 				ft_putchar(str[i]);
 				len++;
+				i++;
 			}
 		}
 		else

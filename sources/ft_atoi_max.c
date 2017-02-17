@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi_max.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/06 16:34:52 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/17 14:40:11 by sait-ben         ###   ########.fr       */
+/*   Created: 2017/02/17 14:25:53 by sait-ben          #+#    #+#             */
+/*   Updated: 2017/02/17 14:32:57 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <locale.h>
-#include "./sources/printf.h"
-#include <limits.h>
+#include "printf.h"
 
-int		main()
+intmax_t	ft_atoi_max(char *s)
 {
-	int	len;
-	int	len2;
-		
-	len = ft_printf("%0+5d", 42);
-//	printf("len = %d\n", len);
-	setlocale(LC_ALL, "");
-	len2 = printf("%0+5d", 42);
-//	printf("len2 = %d\n", len2);
-	ft_putchar('\n');
-	return (0);
+	int i;
+	intmax_t a;
+	intmax_t b;
+
+	i = 0;
+	a = 1;
+	b = 0;
+	while (s[i] == '\n' || s[i] == '\b' || s[i] == '\t' ||
+			s[i] == '\v' || s[i] == '\f' || s[i] == '\r' || s[i] == ' ')
+		i++;
+	if (s[i] == '-')
+		a = -1;
+	if (s[i] == '+' || s[i] == '-')
+		i++;
+	while (s[i] >= 48 && s[i] <= 57)
+	{
+		b = b * 10 + s[i] - 48;
+		i++;
+	}
+	return (a * b);
 }

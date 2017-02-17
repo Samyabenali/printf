@@ -6,18 +6,73 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 16:10:29 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/08 12:26:49 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/17 14:42:47 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
+int		checkzero(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i++])
+	{
+		if (str[i] != '0')
+			return (0);
+	}
+	return (1);
+}
+
+int		checkzerox(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != '0' && str[i] != 'x' && str[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 char	*apply_zero(char *res, t_options *opt)
 {
 	int		i;
+	int		j;
+	char 	*src;
 
 	if (opt->moins == 1)
 		return (res);
+	if (ft_atoi_max(res) < 0)
+	{
+		if ((src = (char*)malloc(sizeof(char) * ft_strlen(res) + 1)) == NULL)
+			return (NULL);
+		src[0] = '-';
+		i = 1;
+		j = 0;
+		while (res[j])
+		{
+			while (res[j] == ' ')
+			{	
+				src[i] = '0';
+				i++;
+				j++;
+			}
+			if (res[j] == '-')
+			{	
+				src[i] = '0';
+				j++;
+			}
+			src[i] = res[j];
+			i++;
+			j++;
+		}
+		return (src);
+	}
 	if ((opt->type == 'x' || opt->type == 'X') && opt->hashtag == 1)
 	{
 		res[0] = '0';
@@ -30,6 +85,17 @@ char	*apply_zero(char *res, t_options *opt)
 		}
 		res[i] = '0';
 		return (res);
+	}
+	if (opt->type == 'p' && (opt->zero == 1 && checkzerox(res) == 1))
+	{
+		src = ft_strdup(res);
+		src[0] = '0';
+		src[1] = 'x';
+		i = 2;
+		while (src[i] != 'x' && src[i])
+			src[i++] = '0';
+		src[i] = '0';
+		return (src);
 	}
 	else
 	{

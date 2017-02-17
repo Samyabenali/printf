@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/07 09:50:21 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/08 13:58:09 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/15 16:55:53 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,6 @@ int		taille2(char *str, int i, t_options *opt)
 		opt->taille = 6;
 		i++;
 	}
-	if (str[i] == '%')
-	{
-		opt->buff[opt->j++] ='%';
-		i++;
-	}
 	return (i);
 }
 
@@ -39,17 +34,17 @@ int		taille(char *str, int i, t_options *opt)
 		opt->taille = 1;
 		i++;
 		if (str[i] == 'h')
-		{	
+		{
 			opt->taille = 2;
 			i++;
 		}
-	}	
+	}
 	if (str[i] == 'l')
 	{
 		opt->taille = 3;
 		i++;
 		if (str[i] == 'l')
-		{	
+		{
 			opt->taille = 4;
 			i++;
 		}
@@ -74,7 +69,6 @@ int		detect2(char *str, int i, t_options *opt)
 	return (i);
 }
 
-
 int		option_detect(char *str, int i, t_options *opt)
 {
 	while (str[i] == '-')
@@ -97,6 +91,6 @@ int		option_detect(char *str, int i, t_options *opt)
 		opt->space = 1;
 		i++;
 	}
-	i = detect2(str, i ,opt);
+	i = detect2(str, i, opt);
 	return (i);
 }

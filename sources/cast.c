@@ -6,20 +6,20 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:32:20 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 12:36:58 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/11 15:37:12 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-long long		signed_cast(va_list ap, t_options *opt)
+intmax_t	signed_cast(va_list ap, t_options *opt)
 {
-	long long nb;
+	intmax_t nb;
 
 	if (opt->taille == 2)
-		nb = (short int)va_arg(ap, int);
+		nb = (char)va_arg(ap, int);
 	if (opt->taille == 1)
-		nb = (signed char)va_arg(ap, int);
+		nb =(short) va_arg(ap, int);
 	if (opt->taille == 3)
 		nb = va_arg(ap, long int);
 	if (opt->taille == 4)
@@ -36,9 +36,9 @@ uintmax_t	unsigned_cast(va_list ap, t_options *opt)
 	uintmax_t nb;
 
 	if (opt->taille == 2)
-		nb = (unsigned short int)va_arg(ap, unsigned int);
-	if (opt->taille == 1)
 		nb = (unsigned char)va_arg(ap, unsigned int);
+	if (opt->taille == 1)
+		nb = (unsigned short)va_arg(ap, unsigned int);
 	if (opt->taille == 3)
 		nb = va_arg(ap, unsigned long int);
 	if (opt->taille == 4)

@@ -6,12 +6,13 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 15:21:45 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/06 13:40:55 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/17 13:02:14 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include "printf.h"
+#include "libft.h"
 
 int	len_count(intmax_t value, int base)
 {

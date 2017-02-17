@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 13:50:49 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/08 12:27:41 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/16 19:02:42 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ws_bis(wchar_t w)
 {
 	char	*src;
 
-	if (w <= 0xFFF)
+	if (w <= 0xFFFF)
 	{
 		if ((src = (char*)malloc(sizeof(char) * 4)) == NULL)
 			return (NULL);
@@ -75,7 +75,7 @@ size_t	wstrlen(wchar_t *str)
 			i++;
 		else if (str[j] <= 0x7FF)
 			i += 2;
-		else if (str[j] <= 0xFFF)
+		else if (str[j] <= 0xFFFF)
 			i += 3;
 		else if (str[j] <= 0x10FFFF)
 			i += 4;
@@ -94,12 +94,20 @@ char	*ws_arg(va_list ap, char c, t_options *opt)
 	(void)c;
 	i = 0;
 	wstr = va_arg(ap, wchar_t*);
-	if ((src = (char*)malloc(sizeof(wchar_t) * (wstrlen(wstr) + 1))) == NULL)
-		return (NULL);
-	while (wstr[i])
+	opt->wbuff = wstr;
+	if ( opt->precision == 0)
+		return ("");
+	if (wstr == NULL)
+		src = "(null)";
+	else
 	{
-		src = ft_strcat(src, ft_wputchar(wstr[i]));
-		i++;
+		if ((src = (char*)malloc(sizeof(wchar_t) * (wstrlen(wstr) + 1))) == NULL)
+			return (NULL);
+		while (wstr[i])
+		{
+			src = ft_strcat(src, ft_wputchar(wstr[i]));
+			i++;
+		}
 	}
 	return (src);
 }

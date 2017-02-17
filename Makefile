@@ -6,7 +6,7 @@
 #    By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/17 15:12:18 by sait-ben          #+#    #+#              #
-#    Updated: 2017/02/08 16:48:14 by sait-ben         ###   ########.fr        #
+#    Updated: 2017/02/17 14:29:12 by sait-ben         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,10 @@ SRCS 	= ft_atoi.c \
 		  p_arg.c \
 		  ft_itoa_base_uint.c \
 		  pct_arg.c \
-		  ft_valeur_absolue.c
+		  ft_valeur_absolue.c \
+		  ft_strsubwchar.c \
+		  apply_precision_p.c \
+		  ft_atoi_max.c 
 
 OBJ_PATH = ./obj/
 

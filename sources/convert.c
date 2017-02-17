@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 15:11:02 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/08 18:05:08 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/14 15:03:10 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*parsing(va_list ap, char c, t_options *opt)
 		{ "s", &s_arg },
 		{ "S", &ws_arg },
 		{ "p", &p_arg },
-		{ "%", &pct_arg }
+		{ "%ZR", &pct_arg }
 	};
 
 	i = 0;
