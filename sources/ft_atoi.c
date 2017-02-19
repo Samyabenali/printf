@@ -6,11 +6,11 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 15:28:48 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/17 14:42:03 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:17:33 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stdio.h>
+#include "printf.h"
 
 int	ft_atoi(const char *s)
 {

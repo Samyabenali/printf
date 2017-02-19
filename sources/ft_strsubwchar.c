@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/15 15:43:15 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/15 18:31:42 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/18 13:18:36 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include <string.h>
 #include "printf.h"
 
-size_t  wwstrlen(wchar_t *str, size_t len)
+size_t	wwstrlen(wchar_t *str, size_t len)
 {
-	size_t  i;
-	size_t  j;
+	size_t	i;
+	size_t	j;
 	size_t	ret;
 
 	i = 0;

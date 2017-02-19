@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 13:50:49 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/16 19:02:42 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/19 16:33:27 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*ws_bis(wchar_t w)
 
 	if (w <= 0xFFFF)
 	{
-		if ((src = (char*)malloc(sizeof(char) * 4)) == NULL)
-			return (NULL);
+		src = ft_strnew(4);
 		src[0] = (w >> 12) + 0xE0;
 		src[1] = ((w >> 6) & 0x3F) + 0x80;
 		src[2] = (w & 0x3F) + 0x80;
@@ -27,8 +26,7 @@ char	*ws_bis(wchar_t w)
 	}
 	else
 	{
-		if ((src = (char*)malloc(sizeof(char) * 5)) == NULL)
-			return (NULL);
+		src = ft_strnew(5);
 		src[0] = (w >> 18) + 0xF0;
 		src[1] = ((w >> 12) & 0x3F) + 0x80;
 		src[2] = ((w >> 6) & 0x3F) + 0x80;
@@ -44,15 +42,13 @@ char	*ft_wputchar(wchar_t w)
 
 	if (w <= 0x7F)
 	{
-		if ((src = (char*)malloc(sizeof(char) * 2)) == NULL)
-			return (NULL);
+		src = ft_strnew(2);
 		src[0] = w;
 		src[1] = '\0';
 	}
 	else if (w <= 0x7FF)
 	{
-		if ((src = (char*)malloc(sizeof(char) * 3)) == NULL)
-			return (NULL);
+		src = ft_strnew(3);
 		src[0] = (w >> 6) + 0xC0;
 		src[1] = (w & 0x3F) + 0x80;
 		src[2] = '\0';
@@ -95,14 +91,13 @@ char	*ws_arg(va_list ap, char c, t_options *opt)
 	i = 0;
 	wstr = va_arg(ap, wchar_t*);
 	opt->wbuff = wstr;
-	if ( opt->precision == 0)
+	if (opt->precision == 0)
 		return ("");
 	if (wstr == NULL)
 		src = "(null)";
 	else
 	{
-		if ((src = (char*)malloc(sizeof(wchar_t) * (wstrlen(wstr) + 1))) == NULL)
-			return (NULL);
+		src = ft_strnew(wstrlen(wstr) + 1);
 		while (wstr[i])
 		{
 			src = ft_strcat(src, ft_wputchar(wstr[i]));

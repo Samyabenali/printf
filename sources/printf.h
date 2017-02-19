@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 13:08:50 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/17 14:31:29 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:28:11 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_options
 	int		lenstr;
 	int		taille;
 	int		count;
+	int		len;
 	int		slen;
 	char	type;
 	wchar_t	*wbuff;
@@ -64,6 +65,7 @@ char			*apply_moins(char *res, t_options *opt);
 char			*apply_hashtag(char *res, t_options *opt);
 char			*apply_zero(char *res, t_options *opt);
 char			*apply_hashtag_x(char *res, t_options *opt);
+char			*apply_precision(char *str, char c, t_options *opt);
 char			*ws_arg(va_list ap, char c, t_options *opt);
 char			*c_arg(va_list ap, char c, t_options *opt);
 char			*p_arg(va_list ap, char c, t_options *opt);
@@ -76,7 +78,7 @@ uintmax_t		ft_valeurabsolue(intmax_t nb);
 char			*ft_strsubwchar(char *s, int start, t_options *opt);
 char			*apply_precision_p(char	*str, t_options *opt);
 int				checkzerox(char *str);
-char			*applyZ(char *str);
+char			*apply_z(char *str);
 intmax_t		ft_atoi_max(char *s);
 
 #endif

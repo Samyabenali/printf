@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:32:20 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/11 15:37:12 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/18 14:33:58 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ intmax_t	signed_cast(va_list ap, t_options *opt)
 	if (opt->taille == 2)
 		nb = (char)va_arg(ap, int);
 	if (opt->taille == 1)
-		nb =(short) va_arg(ap, int);
+		nb = (short)va_arg(ap, int);
 	if (opt->taille == 3)
 		nb = va_arg(ap, long int);
 	if (opt->taille == 4)

@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 12:07:22 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/17 12:14:15 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/19 17:24:21 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ char	*o_arg(va_list ap, char c, t_options *opt)
 {
 	int			i;
 	int			j;
-	uintmax_t 	k;
+	uintmax_t	k;
 	char		*str;
 	char		*res;
 
 	k = va_arg(ap, unsigned int);
 	if (c == 'o' && opt->hashtag == 1 && k != 0)
-	{	
+	{
 		i = 0;
 		j = 0;
 		res = ft_itoa_base(k, 8);
@@ -53,18 +53,34 @@ char	*o_arg(va_list ap, char c, t_options *opt)
 		while (res[j])
 			str[i++] = res[j++];
 		str[i] = '\0';
+		free(res);
 		return (str);
 	}
 	else
 		return (ft_itoa_base_uint(ft_valeurabsolue(k), 8));
 }
 
+char	*int_arg_2(va_list ap, char c, t_options *opt)
+{
+	char	*res;
+
+	if (c == 'o' && opt->taille == 0)
+		return (o_arg(ap, c, opt));
+	if (c == 'x')
+		return (ft_itoa_base((va_arg(ap, unsigned int)), 16));
+	if (c == 'X')
+		return (ft_maj(ft_itoa_base((va_arg(ap, unsigned int)), 16)));
+	if (c == 'u' && opt->taille == 0)
+		return (ft_itoa_base(va_arg(ap, unsigned int), 10));
+	res = ft_itoa(va_arg(ap, int));
+	return (res);
+}
+
 char	*int_arg(va_list ap, char c, t_options *opt)
 {
-	char		*res;
 	uintmax_t	nb;
 	intmax_t	nbb;
-	
+
 	if (opt->taille != 0 && ft_strchr("di", c) != NULL)
 	{
 		nbb = signed_cast(ap, opt);
@@ -85,14 +101,6 @@ char	*int_arg(va_list ap, char c, t_options *opt)
 			return (ft_maj(ft_itoa_base_uint(nb, 16)));
 		return (ft_itoa_base_uint(nb, 16));
 	}
-	if (c == 'o' && opt->taille == 0)
-		return (o_arg(ap, c, opt));
-	if (c == 'x')
-		return (ft_itoa_base((va_arg(ap, unsigned int)), 16));
-	if (c == 'X')
-		return (ft_maj(ft_itoa_base((va_arg(ap, unsigned int)), 16)));
-	if (c == 'u' && opt->taille == 0)
-		return (ft_itoa_base(va_arg(ap,unsigned int), 10));
-	res = ft_itoa_base(va_arg(ap, int), 10);
-	return (res);
+	else
+		return (int_arg_2(ap, c, opt));
 }

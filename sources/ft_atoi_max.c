@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/17 14:25:53 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/17 14:32:57 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/18 13:15:49 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 intmax_t	ft_atoi_max(char *s)
 {
-	int i;
-	intmax_t a;
-	intmax_t b;
+	int			i;
+	intmax_t	a;
+	intmax_t	b;
 
 	i = 0;
 	a = 1;
