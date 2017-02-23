@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 14:50:21 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/19 16:41:00 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/22 13:29:58 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ char	*pct_arg(va_list ap, char c, t_options *opt)
 
 	(void)opt;
 	(void)ap;
-	(void)c;
 	if (c == '%')
 	{
 		res = ft_strnew(2);
 		res[0] = '%';
 		res[1] = '\0';
+		opt->free1 = 1;
 	}
 	if (c == 'Z')
 	{

@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/16 13:37:51 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/18 13:48:27 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/21 11:29:56 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*apply_precision_p(char *str, t_options *opt)
 
 	if ((src = (char*)malloc(sizeof(char) * (3 + opt->precision))) == NULL)
 		return (NULL);
+	opt->free2 = 1;
 	src[0] = '0';
 	src[1] = 'x';
 	i = 2;

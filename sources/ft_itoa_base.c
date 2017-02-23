@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 15:21:45 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/18 15:03:08 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 11:39:25 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_itoa_base(intmax_t value, int base)
 	int			i;
 
 	len = len_count(value, base);
-	buff = ft_strnew(len + 1);
+	buff = ft_strnew(len);
 	i = len;
 	buff[i] = '\0';
 	num = value;

@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/06 13:48:07 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/18 14:40:03 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 11:04:25 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*c_arg_2(va_list ap, wchar_t wt, t_options *opt)
 	if (wt == 0)
 		opt->slen = 1;
 	str = ft_wputchar(wt);
+	opt->free1 = 1;
 	return (str);
 }
 
@@ -35,6 +36,7 @@ char	*c_arg(va_list ap, char c, t_options *opt)
 	{
 		w = va_arg(ap, int);
 		str = ft_strnew(2);
+		opt->free1 = 1;
 		str[0] = (unsigned char)w;
 		str[1] = '\0';
 		return (str);

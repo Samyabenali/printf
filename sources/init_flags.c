@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 17:21:03 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/15 16:59:59 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/21 16:45:24 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,6 @@ void	init_flags(t_options *opt)
 	opt->type = 0;
 	opt->slen = 0;
 	opt->wbuff = NULL;
+	opt->free1 = 0;
+	opt->free2 = 0;
 }

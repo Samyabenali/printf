@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/31 13:50:49 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/19 16:33:27 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:38:16 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ size_t	wstrlen(wchar_t *str)
 char	*ws_arg(va_list ap, char c, t_options *opt)
 {
 	char	*src;
+	char	*str;
 	wchar_t	*wstr;
 	int		i;
 
-	(void)opt;
 	(void)c;
 	i = 0;
 	wstr = va_arg(ap, wchar_t*);
@@ -98,10 +98,12 @@ char	*ws_arg(va_list ap, char c, t_options *opt)
 	else
 	{
 		src = ft_strnew(wstrlen(wstr) + 1);
+		opt->free2 = 1;
 		while (wstr[i])
 		{
-			src = ft_strcat(src, ft_wputchar(wstr[i]));
-			i++;
+			str = ft_wputchar(wstr[i++]);
+			src = ft_strcat(src, str);
+			free(str);
 		}
 	}
 	return (src);

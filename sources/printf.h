@@ -6,14 +6,13 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/03 13:08:50 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/18 14:28:11 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:52:26 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
 # define PRINTF_H
 
-# include <stdio.h>
 # include <stdarg.h>
 # include "libft.h"
 # include <wchar.h>
@@ -33,6 +32,8 @@ typedef struct	s_options
 	int		len;
 	int		slen;
 	char	type;
+	int		free1;
+	int		free2;
 	wchar_t	*wbuff;
 }				t_options;
 
@@ -66,6 +67,7 @@ char			*apply_hashtag(char *res, t_options *opt);
 char			*apply_zero(char *res, t_options *opt);
 char			*apply_hashtag_x(char *res, t_options *opt);
 char			*apply_precision(char *str, char c, t_options *opt);
+char			*apply_largeur(char	*str, t_options *opt);
 char			*ws_arg(va_list ap, char c, t_options *opt);
 char			*c_arg(va_list ap, char c, t_options *opt);
 char			*p_arg(va_list ap, char c, t_options *opt);
@@ -80,5 +82,7 @@ char			*apply_precision_p(char	*str, t_options *opt);
 int				checkzerox(char *str);
 char			*apply_z(char *str);
 intmax_t		ft_atoi_max(char *s);
+char			*apply_hashtag2(char *res, t_options *opt);
+char			*apply_space_2(char	*str, int i, t_options *opt);
 
 #endif

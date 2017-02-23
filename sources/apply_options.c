@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 12:58:10 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/19 17:02:40 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:33:28 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,20 @@ char	*apply_largeur(char *str, t_options *opt)
 	while (j < (int)ft_strlen(str))
 		src[i++] = str[j++];
 	src[i] = '\0';
-//	free (str);
+	if (opt->free2 == 1 || opt->free1 == 1)
+		free(str);
+	opt->free2 = 1;
 	return (src);
 }
 
-char	*apply_plus_2(char *str)
+char	*apply_plus_2(char *str, t_options *opt)
 {
 	char	*src;
 	int		i;
 
 	i = 0;
 	src = ft_strnew(ft_strlen(str) + 2);
+	opt->free2 = 1;
 	src[i] = '+';
 	i++;
 	src[ft_strlen(str) + 1] = '\0';
@@ -78,36 +81,19 @@ char	*apply_plus(char *str, char c, t_options *opt)
 		return (str);
 	}
 	else
-		return (apply_plus_2(str));
+		return (apply_plus_2(str, opt));
 }
 
 char	*apply_space(char *str, char c, t_options *opt)
 {
 	int		i;
-	char	*src;
-	int		len;
 
 	i = 0;
 	if (ft_atoi(str) < 0 || opt->plus == 1 || str[i] == ' '
 			|| ft_strchr("di", c) == NULL)
 		return (str);
 	else
-	{
-		len = ft_strlen(str) + 2;
-		if (opt->space == 1 && opt->zero == 1 && ft_atoi(str) == 0)
-			len--;
-		src = ft_strnew(len);
-		src[i] = ' ';
-		src[len - 1] = '\0';
-		i++;
-		while (i < len - 1)
-		{
-			src[i] = str[i - 1];
-			i++;
-		}
-		free(str);
-		return (src);
-	}
+		return (apply_space_2(str, i, opt));
 }
 
 char	*apply_options(char *str, char c, t_options *opt)

@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 13:07:18 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/19 17:21:52 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:35:20 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*apply_precision_neg(char *str, t_options *opt)
 	char	*src;
 
 	src = ft_strnew(opt->precision + 2);
+	opt->free2 = 1;
 	i = 1;
 	j = 1;
 	src[0] = '-';
@@ -35,7 +36,7 @@ char	*apply_precision_neg(char *str, t_options *opt)
 		opt->zero = 0;
 	}
 	src[i] = '\0';
-	free (str);
+	free(str);
 	return (src);
 }
 
@@ -52,6 +53,7 @@ char	*apply_precision_2(char *str, t_options *opt)
 	if (ft_atoi(str) < 0)
 		return (apply_precision_neg(str, opt));
 	src = ft_strnew(opt->precision + 1);
+	opt->free2 = 1;
 	while ((i < (opt->precision - (int)ft_strlen(str))) && opt->type != 's')
 	{
 		src[i] = '0';
@@ -62,6 +64,8 @@ char	*apply_precision_2(char *str, t_options *opt)
 		src[i++] = str[j++];
 	src[i] = '\0';
 	opt->zero = 0;
+	if (opt->type != 's')
+		free(str);
 	return (src);
 }
 
@@ -78,7 +82,10 @@ char	*apply_precision(char *str, char c, t_options *opt)
 		return (str);
 	}
 	if (len >= opt->precision && c == 's')
+	{
+		opt->free2 = 1;
 		return (ft_strsub(str, 0, opt->precision));
+	}
 	if (len >= opt->precision && c == 'S')
 		return (ft_strsubwchar(str, 0, opt));
 	if ((int)ft_strlen(str) >= opt->precision)

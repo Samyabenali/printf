@@ -6,7 +6,7 @@
 /*   By: sait-ben <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/18 12:37:18 by sait-ben          #+#    #+#             */
-/*   Updated: 2017/02/19 16:29:31 by sait-ben         ###   ########.fr       */
+/*   Updated: 2017/02/23 16:35:59 by sait-ben         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ char	*apply_hashtag_x(char *res, t_options *opt)
 	if (ft_atoi(res) == 0)
 		return (res);
 	str = ft_strnew(ft_strlen(res) + 3);
+	opt->free2 = 1;
 	while (res[j])
 	{
 		str[i] = '0';
@@ -69,32 +70,11 @@ char	*apply_hashtag_x(char *res, t_options *opt)
 
 char	*apply_hashtag(char *res, t_options *opt)
 {
-	char	*str;
-	int		i;
-	int		j;
-
 	if (ft_strchr("csdiupUCDS", opt->type) != NULL || opt->type == '%'
 			|| ft_atoi(res) == 0)
 		return (res);
-	if (opt->type == 'o')
-	{
-		j = -1;
-		i = 0;
-		str = ft_strnew(ft_strlen(res) + 2);
-		while (res[j++] == ' ')
-			str[i++] = ' ';
-		i--;
-		if (res[j] == '0')
-			return (res);
-		str[i] = '0';
-		i++;
-		while (res[j])
-			str[i++] = res[j++];
-		str[i] = '\0';
-		free(res);
-		return (str);
-	}
-	return (res);
+	else
+		return (apply_hashtag2(res, opt));
 }
 
 char	*apply_moins(char *res, t_options *opt)
@@ -116,6 +96,6 @@ char	*apply_moins(char *res, t_options *opt)
 	while (i < len)
 		str[i++] = ' ';
 	str[i] = '\0';
-	free(res);
+	opt->free2 = 1;
 	return (str);
 }
